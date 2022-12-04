@@ -53,27 +53,41 @@ int columns = Convert.ToInt32(Console.ReadLine());
 
 int [,] myArray = CreatAndShowArray(rows, columns);
 
-int [,] orderArrayRows(int [,] array)
+// Сортировка массива по строкам
+int[,] orderArrayRows(int [,] array)
 {
-
-    for(int i = 0; i < array.GetLength(0); i++) 
-        {
-            for(int j = 0; j < array.GetLength(1); j++)  
+       for(int i = 0; i < array.GetLength(0); i++ )
+       {
+            for(int j = array.GetLength(1) - 1; j > 0; j-- ) 
             {
-                int maxValue = array[i, j];
-
-                if (array[i,j] < maxValue)
+                for (int k = 0; k < 0; k++)
                 {
-                    Console.Write(array[i,j] + " ");                    
+                    if( array[i, k] > array[i, k + 1] )
+                    {
+                        int temp = array[i, k];
+                        array[i, k] = array[i, k + 1];
+                        array[i, k + 1] = temp;
+                    }
                 }
-
             }
-            Console.WriteLine(); 
         }
     return array;
 }
 
-orderArrayRows(myArray);
+int [,] sortedArray = orderArrayRows(myArray);
+
+void Show2DArray (int [,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++) // задание строк
+    {
+        for (int j = 0; j < array.GetLength(1); j++) // задание столбцов
+        {
+            Console.Write(array[i,j]+ " ");
+        }
+        Console.WriteLine();
+    }
+}
+Show2DArray(sortedArray);
 
 
 // Задача 56: Задайте прямоугольный двумерный массив. Напишите программу,
@@ -119,3 +133,4 @@ orderArrayRows(myArray);
 // 12 13 14 05
 // 11 16 15 06
 // 10 09 08 07
+
