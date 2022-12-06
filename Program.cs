@@ -100,6 +100,88 @@
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки 
 // с наименьшей суммой элементов: 1 строка
 
+// int [,] CreatAndShowArray(int rows, int columns)  
+// {      
+//     // Инициализация массива
+//     int[,] newArray = new int[rows, columns];  
+    
+//     if( rows > 0 && columns > 0)
+//     {
+//         // создание массива
+//         for (int i = 0; i < rows; i++)
+//         {
+//             for(int j = 0; j < columns; j++)
+//             {
+//             newArray[i,j] = new Random().Next(1, 11);
+//             }
+//         }
+
+//         // Отображение массива
+//         for(int i = 0; i < rows ;i++ ) 
+//             {
+//                 for(int j = 0; j < columns; j++)  
+//                 {
+//                 Console.Write(newArray[i,j] + " ");
+//                 }
+//                 Console.WriteLine(); 
+//             }
+//         Console.WriteLine();    
+//         return newArray;
+//     }
+//     else 
+//     {
+//         Console.WriteLine("Ошибка ввода данных");
+//         return newArray;
+//     }
+
+// }
+
+// // пользовательский ввод для создания массива
+// Console.Write("Введите кол-во строк ");
+// int rows = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите кол-во столбцов ");
+// int columns = Convert.ToInt32(Console.ReadLine());
+// // вывод массива
+// int [,] myArray = CreatAndShowArray(rows, columns);
+
+// void findStringhWithMinSum(int [,] array)
+// {
+//     int count_size = array.GetLength(0); // размер массива сумм
+//     int [] sum = new int [count_size]; // массив сумм каждой строки
+//     // Ищем и выводим сумму каждой строки
+//     for(int i = 0; i < array.GetLength(0); i++ ) 
+//         {
+//             for(int j = 0; j < array.GetLength(1); j++)
+//             {
+//                 sum [i] = sum [i] + array[i, j];
+//             }
+//             Console.WriteLine($"Сумма строка {i+1} равна {sum[i]}");
+//         }
+
+//     // Ищем наименьшую сумму
+//     int minSum = 0;
+//     for (int i = 0; i < sum.GetLength(0); i++)
+//     {
+//         minSum = sum[0];
+//         if (sum[i] < minSum)
+//         {
+//             minSum = sum[i];
+//         }
+//     }
+//     Console.Write($"Минимальная сумма {minSum}"); 
+// }
+
+// findStringhWithMinSum(myArray);
+
+// Задача 58: Задайте две матрицы. Напишите программу, 
+// которая будет находить произведение двух матриц.
+// Например, даны 2 матрицы:
+// 2 4 | 3 4
+// 3 2 | 3 3
+// Результирующая матрица будет:
+// 18 20
+// 15 18
+
 int [,] CreatAndShowArray(int rows, int columns)  
 {      
     // Инициализация массива
@@ -142,47 +224,35 @@ int rows = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите кол-во столбцов ");
 int columns = Convert.ToInt32(Console.ReadLine());
 // вывод массива
-int [,] myArray = CreatAndShowArray(rows, columns);
+Console.WriteLine("Массив 1");
+int [,] myArray_1 = CreatAndShowArray(rows, columns);
+Console.WriteLine("Массив 2");
+int [,] myArray_2 = CreatAndShowArray(myArray_1.GetLength(0), myArray_1.GetLength(1));
 
-void findStringhWithMinSum(int [,] array)
+void MultiplyTwoArray(int [,] array_1, int [,] array_2)
 {
-    int count_size = array.GetLength(0); // размер массива сумм
-    int [] sum = new int [count_size]; // массив сумм каждой строки
-    // Ищем и выводим сумму каждой строки
-    for(int i = 0; i < array.GetLength(0); i++ ) 
-        {
-            for(int j = 0; j < array.GetLength(1); j++)
-            {
-                sum [i] = sum [i] + array[i, j];
-            }
-            Console.WriteLine($"Сумма строка {i+1} равна {sum[i]}");
-        }
-
-    // Ищем наименьшую сумму
-    int minSum = 0;
-    for (int i = 0; i < sum.GetLength(0); i++)
+    int [,] multiplyArray = new int[array_1.GetLength(0), array_1.GetLength(1)];
+    for (int i = 0; i < array_1.GetLength(0); i++)
     {
-        minSum = sum[0];
-        if (sum[i] < minSum)
+        for (int j = 0; j < array_1.GetLength(1); j++)
         {
-            minSum = sum[i];
+            multiplyArray[i, j] = array_1[i,j] * array_2[i, j];
         }
     }
-    Console.Write($"Минимальная сумма {minSum}"); 
+    // Отображение массива
+    Console.WriteLine("Произведение двух массивов");
+    for(int i = 0; i < rows ;i++ ) 
+        {
+            for(int j = 0; j < columns; j++)  
+            {
+                Console.Write(multiplyArray[i,j] + " ");
+            }
+            Console.WriteLine(); 
+        }
+    Console.WriteLine();
 }
 
-findStringhWithMinSum(myArray);
-
-// Задача 58: Задайте две матрицы. Напишите программу, 
-// которая будет находить произведение двух матриц.
-// Например, даны 2 матрицы:
-// 2 4 | 3 4
-// 3 2 | 3 3
-// Результирующая матрица будет:
-// 18 20
-// 15 18
-
-
+MultiplyTwoArray(myArray_1, myArray_2);
 
 // Задача 60. Сформируйте трёхмерный массив из неповторяющихся двузначных чисел.
 // Напишите программу, которая будет построчно выводить массив,
