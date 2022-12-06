@@ -54,40 +54,43 @@ int columns = Convert.ToInt32(Console.ReadLine());
 int [,] myArray = CreatAndShowArray(rows, columns);
 
 // Сортировка массива по строкам
-int[,] orderArrayRows(int [,] array)
+int [,] orderArrayRows(int [,] arr)
 {
-       for(int i = 0; i < array.GetLength(0); i++ )
-       {
-            for(int j = array.GetLength(1) - 1; j > 0; j-- ) 
+    // Сортировка массива
+    for (int i = 0; i < arr.GetLength(0); i++) // двигаемся по строкам
+    {
+        for (int j = arr.GetLength(1) - 1; j > 0; j--) // двигаемся по столбцам назад
+        {
+            for (int k = 0; k < j; k++) // доп. переменная
             {
-                for (int k = 0; k < 0; k++)
+                if (arr[i, k] < arr[i, k + 1])
                 {
-                    if( array[i, k] > array[i, k + 1] )
-                    {
-                        int temp = array[i, k];
-                        array[i, k] = array[i, k + 1];
-                        array[i, k + 1] = temp;
-                    }
+                    int temp = arr[i, k];
+                    arr[i, k] = arr[i, k + 1];
+                    arr[i, k + 1] = temp;
                 }
             }
         }
-    return array;
+    }
+    return arr;
 }
 
-int [,] sortedArray = orderArrayRows(myArray);
+int [,] orderArray = orderArrayRows(myArray);
 
-void Show2DArray (int [,] array)
+void Show2DArray(int [,] array)
 {
-    for (int i = 0; i < array.GetLength(0); i++) // задание строк
+    // вывод на экран отсортированного массива
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int j = 0; j < array.GetLength(1); j++) // задание столбцов
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            Console.Write(array[i,j]+ " ");
+                Console.Write(array[i , j] + " ");
         }
         Console.WriteLine();
     }
 }
-Show2DArray(sortedArray);
+
+Show2DArray(orderArray);
 
 
 // Задача 56: Задайте прямоугольный двумерный массив. Напишите программу,
