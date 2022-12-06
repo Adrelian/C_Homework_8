@@ -10,6 +10,96 @@
 // 9 5 3 2
 // 8 4 4 2
 
+// int [,] CreatAndShowArray(int rows, int columns)  
+// {      
+//     // Инициализация массива
+//     int[,] newArray = new int[rows, columns];  
+    
+//     if( rows > 0 && columns > 0)
+//     {
+//         // создание массива
+//         for (int i = 0; i < rows; i++)
+//         {
+//             for(int j = 0; j < columns; j++)
+//             {
+//             newArray[i,j] = new Random().Next(1, 11);
+//             }
+//         }
+
+//         // Отображение массива
+//         for(int i = 0; i < rows ;i++ ) 
+//             {
+//                 for(int j = 0; j < columns; j++)  
+//                 {
+//                 Console.Write(newArray[i,j] + " ");
+//                 }
+//                 Console.WriteLine(); 
+//             }
+//         Console.WriteLine();    
+//         return newArray;
+//     }
+//     else 
+//     {
+//         Console.WriteLine("Ошибка ввода данных");
+//         return newArray;
+//     }
+
+// }
+
+// Console.Write("Введите кол-во строк ");
+// int rows = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите кол-во столбцов ");
+// int columns = Convert.ToInt32(Console.ReadLine());
+
+// int [,] myArray = CreatAndShowArray(rows, columns);
+
+// // Сортировка массива по строкам
+// int [,] orderArrayRows(int [,] arr)
+// {
+//     // Сортировка массива
+//     for (int i = 0; i < arr.GetLength(0); i++) // двигаемся по строкам
+//     {
+//         for (int j = arr.GetLength(1) - 1; j > 0; j--) // двигаемся по столбцам назад
+//         {
+//             for (int k = 0; k < j; k++) // доп. переменная
+//             {
+//                 if (arr[i, k] < arr[i, k + 1])
+//                 {
+//                     int temp = arr[i, k];
+//                     arr[i, k] = arr[i, k + 1];
+//                     arr[i, k + 1] = temp;
+//                 }
+//             }
+//         }
+//     }
+
+//     // вывод на экран отсортированного массива
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//                 Console.Write(arr[i , j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+//     return arr;
+// }
+
+// orderArrayRows(myArray);
+
+// Задача 56: Задайте прямоугольный двумерный массив. Напишите программу,
+// которая будет находить строку с наименьшей суммой элементов.
+
+// Например, задан массив:
+
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// 5 2 6 7
+
+// Программа считает сумму элементов в каждой строке и выдаёт номер строки 
+// с наименьшей суммой элементов: 1 строка
+
 int [,] CreatAndShowArray(int rows, int columns)  
 {      
     // Инициализация массива
@@ -46,63 +136,42 @@ int [,] CreatAndShowArray(int rows, int columns)
 
 }
 
+// пользовательский ввод для создания массива
 Console.Write("Введите кол-во строк ");
 int rows = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите кол-во столбцов ");
 int columns = Convert.ToInt32(Console.ReadLine());
-
+// вывод массива
 int [,] myArray = CreatAndShowArray(rows, columns);
 
-// Сортировка массива по строкам
-int [,] orderArrayRows(int [,] arr)
+void findStringhWithMinSum(int [,] array)
 {
-    // Сортировка массива
-    for (int i = 0; i < arr.GetLength(0); i++) // двигаемся по строкам
-    {
-        for (int j = arr.GetLength(1) - 1; j > 0; j--) // двигаемся по столбцам назад
+    int count_size = array.GetLength(0); // размер массива сумм
+    int [] sum = new int [count_size]; // массив сумм каждой строки
+    // Ищем и выводим сумму каждой строки
+    for(int i = 0; i < array.GetLength(0); i++ ) 
         {
-            for (int k = 0; k < j; k++) // доп. переменная
+            for(int j = 0; j < array.GetLength(1); j++)
             {
-                if (arr[i, k] < arr[i, k + 1])
-                {
-                    int temp = arr[i, k];
-                    arr[i, k] = arr[i, k + 1];
-                    arr[i, k + 1] = temp;
-                }
+                sum [i] = sum [i] + array[i, j];
             }
+            Console.WriteLine($"Сумма строка {i+1} равна {sum[i]}");
         }
-    }
-    
-    // вывод на экран отсортированного массива
-    for (int i = 0; i < arr.GetLength(0); i++)
+
+    // Ищем наименьшую сумму
+    int minSum = 0;
+    for (int i = 0; i < sum.GetLength(0); i++)
     {
-        for (int j = 0; j < arr.GetLength(1); j++)
+        minSum = sum[0];
+        if (sum[i] < minSum)
         {
-                Console.Write(arr[i , j] + " ");
+            minSum = sum[i];
         }
-        Console.WriteLine();
     }
-    return arr;
+    Console.Write($"Минимальная сумма {minSum}"); 
 }
 
-
-orderArrayRows(myArray);
-
-// Задача 56: Задайте прямоугольный двумерный массив. Напишите программу,
-// которая будет находить строку с наименьшей суммой элементов.
-
-// Например, задан массив:
-
-// 1 4 7 2
-// 5 9 2 3
-// 8 4 2 4
-// 5 2 6 7
-
-// Программа считает сумму элементов в каждой строке и выдаёт номер строки 
-// с наименьшей суммой элементов: 1 строка
-
-
-
+findStringhWithMinSum(myArray);
 
 // Задача 58: Задайте две матрицы. Напишите программу, 
 // которая будет находить произведение двух матриц.
