@@ -72,26 +72,21 @@ int [,] orderArrayRows(int [,] arr)
             }
         }
     }
-    return arr;
-}
-
-int [,] orderArray = orderArrayRows(myArray);
-
-void Show2DArray(int [,] array)
-{
+    
     // вывод на экран отсортированного массива
-    for (int i = 0; i < array.GetLength(0); i++)
+    for (int i = 0; i < arr.GetLength(0); i++)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
+        for (int j = 0; j < arr.GetLength(1); j++)
         {
-                Console.Write(array[i , j] + " ");
+                Console.Write(arr[i , j] + " ");
         }
         Console.WriteLine();
     }
+    return arr;
 }
 
-Show2DArray(orderArray);
 
+orderArrayRows(myArray);
 
 // Задача 56: Задайте прямоугольный двумерный массив. Напишите программу,
 // которая будет находить строку с наименьшей суммой элементов.
@@ -105,6 +100,7 @@ Show2DArray(orderArray);
 
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки 
 // с наименьшей суммой элементов: 1 строка
+
 
 
 
