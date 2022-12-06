@@ -182,77 +182,77 @@
 // 18 20
 // 15 18
 
-int [,] CreatAndShowArray(int rows, int columns)  
-{      
-    // Инициализация массива
-    int[,] newArray = new int[rows, columns];  
+// int [,] CreatAndShowArray(int rows, int columns)  
+// {      
+//     // Инициализация массива
+//     int[,] newArray = new int[rows, columns];  
     
-    if( rows > 0 && columns > 0)
-    {
-        // создание массива
-        for (int i = 0; i < rows; i++)
-        {
-            for(int j = 0; j < columns; j++)
-            {
-            newArray[i,j] = new Random().Next(1, 11);
-            }
-        }
+//     if( rows > 0 && columns > 0)
+//     {
+//         // создание массива
+//         for (int i = 0; i < rows; i++)
+//         {
+//             for(int j = 0; j < columns; j++)
+//             {
+//             newArray[i,j] = new Random().Next(1, 11);
+//             }
+//         }
 
-        // Отображение массива
-        for(int i = 0; i < rows ;i++ ) 
-            {
-                for(int j = 0; j < columns; j++)  
-                {
-                Console.Write(newArray[i,j] + " ");
-                }
-                Console.WriteLine(); 
-            }
-        Console.WriteLine();    
-        return newArray;
-    }
-    else 
-    {
-        Console.WriteLine("Ошибка ввода данных");
-        return newArray;
-    }
+//         // Отображение массива
+//         for(int i = 0; i < rows ;i++ ) 
+//             {
+//                 for(int j = 0; j < columns; j++)  
+//                 {
+//                 Console.Write(newArray[i,j] + " ");
+//                 }
+//                 Console.WriteLine(); 
+//             }
+//         Console.WriteLine();    
+//         return newArray;
+//     }
+//     else 
+//     {
+//         Console.WriteLine("Ошибка ввода данных");
+//         return newArray;
+//     }
 
-}
+// }
 
-// пользовательский ввод для создания массива
-Console.Write("Введите кол-во строк ");
-int rows = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите кол-во столбцов ");
-int columns = Convert.ToInt32(Console.ReadLine());
-// вывод массива
-Console.WriteLine("Массив 1");
-int [,] myArray_1 = CreatAndShowArray(rows, columns);
-Console.WriteLine("Массив 2");
-int [,] myArray_2 = CreatAndShowArray(myArray_1.GetLength(0), myArray_1.GetLength(1));
+// // пользовательский ввод для создания массива
+// Console.Write("Введите кол-во строк ");
+// int rows = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите кол-во столбцов ");
+// int columns = Convert.ToInt32(Console.ReadLine());
+// // вывод массива
+// Console.WriteLine("Массив 1");
+// int [,] myArray_1 = CreatAndShowArray(rows, columns);
+// Console.WriteLine("Массив 2");
+// int [,] myArray_2 = CreatAndShowArray(myArray_1.GetLength(0), myArray_1.GetLength(1));
 
-void MultiplyTwoArray(int [,] array_1, int [,] array_2)
-{
-    int [,] multiplyArray = new int[array_1.GetLength(0), array_1.GetLength(1)];
-    for (int i = 0; i < array_1.GetLength(0); i++)
-    {
-        for (int j = 0; j < array_1.GetLength(1); j++)
-        {
-            multiplyArray[i, j] = array_1[i,j] * array_2[i, j];
-        }
-    }
-    // Отображение массива
-    Console.WriteLine("Произведение двух массивов");
-    for(int i = 0; i < rows ;i++ ) 
-        {
-            for(int j = 0; j < columns; j++)  
-            {
-                Console.Write(multiplyArray[i,j] + " ");
-            }
-            Console.WriteLine(); 
-        }
-    Console.WriteLine();
-}
+// void MultiplyTwoArray(int [,] array_1, int [,] array_2)
+// {
+//     int [,] multiplyArray = new int[array_1.GetLength(0), array_1.GetLength(1)];
+//     for (int i = 0; i < array_1.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array_1.GetLength(1); j++)
+//         {
+//             multiplyArray[i, j] = array_1[i,j] * array_2[i, j];
+//         }
+//     }
+//     // Отображение массива
+//     Console.WriteLine("Произведение двух массивов");
+//     for(int i = 0; i < rows ;i++ ) 
+//         {
+//             for(int j = 0; j < columns; j++)  
+//             {
+//                 Console.Write(multiplyArray[i,j] + " ");
+//             }
+//             Console.WriteLine(); 
+//         }
+//     Console.WriteLine();
+// }
 
-MultiplyTwoArray(myArray_1, myArray_2);
+// MultiplyTwoArray(myArray_1, myArray_2);
 
 // Задача 60. Сформируйте трёхмерный массив из неповторяющихся двузначных чисел.
 // Напишите программу, которая будет построчно выводить массив,
@@ -262,6 +262,61 @@ MultiplyTwoArray(myArray_1, myArray_2);
 // 34(1,0,0) 41(1,1,0)
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
+
+int [,,] CreatAndShow3D_Array(int x, int y, int z)  
+{      
+    // Инициализация массива
+    int[,,] new3D_Array = new int[x, y, z];
+    Random rndValue = new Random();  
+    
+    if( x > 0 && y > 0 && z > 0)
+    {
+        // создание массива трёхмерного массива
+        for (int i = 0; i < new3D_Array.GetLength(0); i++) // по оси Х
+        {
+            for(int j = 0; j < new3D_Array.GetLength(1); j++) // по оси Y
+            {
+                for(int k = 0; k < new3D_Array.GetLength(2); k++) // по оси Z
+                {
+                    new3D_Array[i, j, k] = rndValue.Next(10, 100);
+                }           
+            }
+        }
+        
+
+        // Отображение массива
+         for (int i = 0; i < x; i++) // по оси Х
+        {
+            for(int j = 0; j < y; j++) // по оси Y
+            {
+                Console.Write("|");
+                for(int k = 0; k < z; k++) // по оси Z
+                {
+                    Console.Write($"{new3D_Array[i, j, k],1}({i},{j},{k})|");;
+                }
+                Console.WriteLine();            
+            }
+
+        }
+   
+        return new3D_Array;
+    }
+    else 
+    {
+        Console.WriteLine("Ошибка ввода данных");
+        return new3D_Array;
+    }
+}
+
+// Пользовательский ввод трёхмерного массива
+Console.WriteLine("Введите кол-во элементов по оси Х");
+int x = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите кол-во элементов по оси Y");
+int y = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите кол-во элементов по оси Z");
+int z = Convert.ToInt32(Console.ReadLine());
+
+CreatAndShow3D_Array(x, y, z);
 
 
 
