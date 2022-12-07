@@ -263,12 +263,25 @@
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
+int UniqueNumber();
+{
+    while (true)
+    {
+        var n = r.Next(0, 1000);
+        if (!numbers.Contains(n))
+        {
+            numbers.Add(n);
+            return n;
+        }
+    }
+}
+
 int [,,] CreatAndShow3D_Array(int x, int y, int z)  
 {      
     // Инициализация массива
     int[,,] new3D_Array = new int[x, y, z];
     Random rndValue = new Random();  
-    
+  
     if( x > 0 && y > 0 && z > 0)
     {
         // создание массива трёхмерного массива
@@ -278,7 +291,7 @@ int [,,] CreatAndShow3D_Array(int x, int y, int z)
             {
                 for(int k = 0; k < new3D_Array.GetLength(2); k++) // по оси Z
                 {
-                    new3D_Array[i, j, k] = rndValue.Next(10, 100);
+                    new3D_Array[i, j, k] = rndValue.Next(10, 20);
                 }           
             }
         }
@@ -296,7 +309,6 @@ int [,,] CreatAndShow3D_Array(int x, int y, int z)
                 }
                 Console.WriteLine();            
             }
-
         }
    
         return new3D_Array;
