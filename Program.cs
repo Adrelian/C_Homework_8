@@ -263,15 +263,20 @@
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
-int UniqueNumber();
+int [,,] MadeUniqueNumber(int [,,] rndArr)
 {
-    while (true)
+        // создание массива трёхмерного массива из уникальных элементов
+    int [,,] uniqueArray = new int[rndArr.GetLength(0), rndArr.GetLength(1), rndArr.GetLength(2)];
+
+
+    for (int i = 0; i < uniqueArray.GetLength(0); i++) // по оси Х
     {
-        var n = r.Next(0, 1000);
-        if (!numbers.Contains(n))
+        for(int j = 0; j < uniqueArray.GetLength(1); j++) // по оси Y
         {
-            numbers.Add(n);
-            return n;
+            for(int k = 0; k < uniqueArray.GetLength(2); k++) // по оси Z
+            {
+                
+            }           
         }
     }
 }
