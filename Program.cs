@@ -265,17 +265,22 @@
 
 int [,,] MadeUniqueNumber(int [,,] rndArr)
 {
-        // создание массива трёхмерного массива из уникальных элементов
+      // создание массива трёхмерного массива из уникальных элементов
     int [,,] uniqueArray = new int[rndArr.GetLength(0), rndArr.GetLength(1), rndArr.GetLength(2)];
 
+    int aimNumber = 0; // целевой элемент 
 
+    // переборка целевого элемента
     for (int i = 0; i < uniqueArray.GetLength(0); i++) // по оси Х
     {
         for(int j = 0; j < uniqueArray.GetLength(1); j++) // по оси Y
         {
             for(int k = 0; k < uniqueArray.GetLength(2); k++) // по оси Z
             {
-                
+                aimNumber = uniqueArray[i,j,k];
+
+                    if (aimNumber == )
+
             }           
         }
     }
