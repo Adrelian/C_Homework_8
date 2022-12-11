@@ -287,7 +287,7 @@ void UniqueNumber(int row, int col, int dep)
                         {
                             for(int z = 0; z < k; z++) // по оси Z
                             {
-                                if (array[i,j,k] == array[x,y,z])
+                                if (array[i, j, k] == array[x, y, z])
                                 {
                                     isUnique = false;
                                     break;
