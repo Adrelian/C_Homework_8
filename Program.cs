@@ -1,4 +1,4 @@
-﻿// Задача 54: Задайте двумерный массив. Напишите программу,
+// Задача 54: Задайте двумерный массив. Напишите программу,
 // которая упорядочит по убыванию элементы каждой строки двумерного массива.
 
 // Например, задан массив:
@@ -263,72 +263,59 @@
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
-int [,,] MadeUniqueNumber(int [,,] rndArr)
+void UniqueNumber(int row, int col, int dep)
 {
-      // создание массива трёхмерного массива из уникальных элементов
-    int [,,] uniqueArray = new int[rndArr.GetLength(0), rndArr.GetLength(1), rndArr.GetLength(2)];
+    // инициализация массива
+    int[,,] array = new int [row, col, dep];
 
-    int aimNumber = 0; // целевой элемент 
-
-    // переборка целевого элемента
-    for (int i = 0; i < uniqueArray.GetLength(0); i++) // по оси Х
+    // создание массива трёхмерного массива
+    for (int i = 0; i < row; i++) // по оси Х
     {
-        for(int j = 0; j < uniqueArray.GetLength(1); j++) // по оси Y
+        for(int j = 0; j < col; j++) // по оси Y
         {
-            for(int k = 0; k < uniqueArray.GetLength(2); k++) // по оси Z
+            for(int k = 0; k < dep; k++) // по оси Z
             {
-                aimNumber = uniqueArray[i,j,k];
-
-                    if (aimNumber == )
-
-            }           
-        }
-    }
-}
-
-int [,,] CreatAndShow3D_Array(int x, int y, int z)  
-{      
-    // Инициализация массива
-    int[,,] new3D_Array = new int[x, y, z];
-    Random rndValue = new Random();  
-  
-    if( x > 0 && y > 0 && z > 0)
-    {
-        // создание массива трёхмерного массива
-        for (int i = 0; i < new3D_Array.GetLength(0); i++) // по оси Х
-        {
-            for(int j = 0; j < new3D_Array.GetLength(1); j++) // по оси Y
-            {
-                for(int k = 0; k < new3D_Array.GetLength(2); k++) // по оси Z
+                // пока "уникальность" равно false ищем новое случайное число
+                bool isUnique = false;
+                while (isUnique == false)
                 {
-                    new3D_Array[i, j, k] = rndValue.Next(10, 20);
-                }           
-            }
-        }
-        
-
-        // Отображение массива
-         for (int i = 0; i < x; i++) // по оси Х
-        {
-            for(int j = 0; j < y; j++) // по оси Y
-            {
-                Console.Write("|");
-                for(int k = 0; k < z; k++) // по оси Z
-                {
-                    Console.Write($"{new3D_Array[i, j, k],1}({i},{j},{k})|");;
+                    isUnique = true;
+                    array[i, j ,k] = new Random().Next(10,21);
+                    for (int x = 0; x < i; x++) // по оси Х
+                    {
+                        for(int y = 0; y < j; y++) // по оси Y
+                        {
+                            for(int z = 0; z < k; z++) // по оси Z
+                            {
+                                if (array[i,j,k] == array[x,y,z])
+                                {
+                                    isUnique = false;
+                                    break;
+                                }
+                            }
+                        }
+                    }
                 }
-                Console.WriteLine();            
+
             }
         }
-   
-        return new3D_Array;
     }
-    else 
+
+    // Отображение массива
+    for (int i = 0; i < row; i++) // по оси Х
     {
-        Console.WriteLine("Ошибка ввода данных");
-        return new3D_Array;
+        for(int j = 0; j < col; j++) // по оси Y
+        {
+            Console.Write("|");
+            for(int k = 0; k < dep; k++) // по оси Z
+            {
+                Console.Write($"{array[i, j, k],1}({i},{j},{k})|");
+            }
+            Console.WriteLine();            
+        }
     }
 }
+
 
 // Пользовательский ввод трёхмерного массива
 Console.WriteLine("Введите кол-во элементов по оси Х");
@@ -338,9 +325,34 @@ int y = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Введите кол-во элементов по оси Z");
 int z = Convert.ToInt32(Console.ReadLine());
 
-CreatAndShow3D_Array(x, y, z);
+UniqueNumber(x, y, z);
 
 
+// static int[] CreateRandomArray(int minValue, int length)
+// {
+//     int[] array = new int[length];
+//     for (int i = 0; i < length; i++)
+//     {
+//         bool isUnique = false;
+//         while (isUnique == false)
+//         {
+//             array[i] = new Random().Next(minValue, minValue + length);
+//             isUnique = true;
+//             for (int j = 0; j < i; j++)
+//             {
+//                 if (array[i] == array[j])
+//                 {
+//                     isUnique = false;
+//                     break;
+//                 }
+//             }
+//         } 
+//         Console.Write(array[i] + " ");
+//     }
+//     return array;
+// }
+
+// int [] arr = CreateRandomArray(1, 10);
 
 // Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
 // Например, на выходе получается вот такой массив:
