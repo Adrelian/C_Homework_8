@@ -276,10 +276,10 @@ void UniqueNumber(int row, int col, int dep)
             for(int k = 0; k < dep; k++) // по оси Z
             {
                 // создаём рандомное значение для трёхмерного массива
+                array[i,j,k] = new Random().Next(10,21);
             }
         }
     }
-
 
     // Отображение массива
     for (int i = 0; i < row; i++) // по оси Х
