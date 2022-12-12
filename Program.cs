@@ -346,47 +346,47 @@ int [,] spiralArray (int n)
     int[,] array = new int[4,4];
     array[i,j] = n;
 
+    // строка 1 запись слево направо i=0 j=0
     while(j+1 < 4)
     {
         j++;
         n++;
         array[i,j] = n;
     }
-
+    // стобец 4 запись сверху вниз i=0 j=4
     while(i+1 < 4)
     {
-            i++;
-            n++;
-            array[i,j] = n;
+        i++;
+        n++;
+        array[i,j] = n;
     }
-
+    // строка 4 запись справо налевао i=4; j=4
     while(j-1 >= 0)
     {
-            j--;
-            n++;
-            array[i,j] = n;
+        j--;
+        n++;
+        array[i,j] = n;
     }
-
+    // стоблец 1 запись снизу вверх i=4 j=0
     while(array[i-1,j] == 0)
     {
-            i--;
-            n++;
-            array[i,j] = n;
+        i--;
+        n++;
+        array[i,j] = n;
     }
-
-      while(array[i,j+1] == 0)
+    // строка 2 запись слева направо i=1 j=0
+    while(array[i,j+1] == 0)
     {
-            j++;
-            n++;
-            array[i,j] = n;
+        j++;
+        n++;
+        array[i,j] = n;
     }
-
-
-      while(array[i+1,j] == 0)
+    // строка 3 запись справо налеова i=2 j=2
+    while(array[i+1,j] == 0)
     {
-            i++;
-            n++;
-            array[i,j] = n;
+        i++;
+        n++;
+        array[i,j] = n;
     }
 
 
