@@ -275,11 +275,11 @@ void UniqueNumber(int row, int col, int dep)
         {
             for(int k = 0; k < dep; k++) // по оси Z
             {
-                array[i, j ,k] = new Random().Next(10,21);
                 bool isUnique;
                 // пока "уникальность" равно false ищем новое случайное число
                 do
                 {
+                    array[i, j ,k] = new Random().Next(10,21);
                     isUnique = false;
                     for (int x = 0; x < i; x++) // по оси Х
                     {
