@@ -275,12 +275,12 @@ void UniqueNumber(int row, int col, int dep)
         {
             for(int k = 0; k < dep; k++) // по оси Z
             {
-                bool isUnique;
                 // пока "уникальность" равно false ищем новое случайное число
-                do
+                bool isUnique = false;
+                while(isUnique == false)
                 {
                     array[i, j ,k] = new Random().Next(10,21);
-                    isUnique = false;
+                    isUnique = true;
                     for (int x = 0; x < i; x++) // по оси Х
                     {
                         for(int y = 0; y < j; y++) // по оси Y
@@ -289,13 +289,13 @@ void UniqueNumber(int row, int col, int dep)
                             {
                                 if (array[i, j, k] == array[x, y, z])
                                 {
-                                    isUnique = true;
+                                    isUnique = false;
                                     break;
                                 }
                             }
                         }
                     }
-                } while(isUnique);
+                } 
             }
         }
     }
