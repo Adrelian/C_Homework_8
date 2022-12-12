@@ -265,8 +265,11 @@
 
 void UniqueNumber(int row, int col, int dep)
 {
-    // инициализация массива
+    // инициализация трёхмерного массива
     int[,,] array = new int [row, col, dep];
+
+    // одномерный массив для проверки
+    int[] result = new int [row*col*dep];
 
     // создание массива трёхмерного массива
     for (int i = 0; i < row; i++) // по оси Х
@@ -275,28 +278,14 @@ void UniqueNumber(int row, int col, int dep)
         {
             for(int k = 0; k < dep; k++) // по оси Z
             {
-                // пока "уникальность" равно false ищем новое случайное число
-                
-                while (isUnique == false)
-                {
-                    isUnique = true;
-                    array[i, j ,k] = new Random().Next(10,21);
-                    for (int x = 0; x < i; x++) // по оси Х
-                    {
-                        for(int y = 0; y < j; y++) // по оси Y
-                        {
-                            for(int z = 0; z < k; z++) // по оси Z
-                            {
-                                if (array[i, j, k] == array[x, y, z])
-                                {
-                                    isUnique = false;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
+                // создаём рандомное значение для трёхмерного массива
+                array[i, j ,k] = new Random().Next(10,21);
 
+                // записываем новое значение в массив сравнения
+                for (int p = 0; p < result.GetLength(0); p++)
+                {
+                    result[p] = array[i,j,k];
+                }
             }
         }
     }
