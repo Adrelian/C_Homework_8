@@ -1,4 +1,4 @@
-// Задача 54: Задайте двумерный массив. Напишите программу,
+﻿// Задача 54: Задайте двумерный массив. Напишите программу,
 // которая упорядочит по убыванию элементы каждой строки двумерного массива.
 
 // Например, задан массив:
@@ -268,19 +268,19 @@ void UniqueNumber(int row, int col, int dep)
     // инициализация массива
     int[,,] array = new int [row, col, dep];
 
-    // создание массива трёхмерного массива
+    // перебор массива для выборки
     for (int i = 0; i < row; i++) // по оси Х
     {
         for(int j = 0; j < col; j++) // по оси Y
         {
             for(int k = 0; k < dep; k++) // по оси Z
             {
+                array[i, j ,k] = new Random().Next(10,21);
+                bool isUnique;
                 // пока "уникальность" равно false ищем новое случайное число
-                bool isUnique = false;
-                while (isUnique == false)
+                do
                 {
-                    isUnique = true;
-                    array[i, j ,k] = new Random().Next(10,21);
+                    isUnique = false;
                     for (int x = 0; x < i; x++) // по оси Х
                     {
                         for(int y = 0; y < j; y++) // по оси Y
@@ -289,14 +289,13 @@ void UniqueNumber(int row, int col, int dep)
                             {
                                 if (array[i, j, k] == array[x, y, z])
                                 {
-                                    isUnique = false;
+                                    isUnique = true;
                                     break;
                                 }
                             }
                         }
                     }
-                }
-
+                } while(isUnique);
             }
         }
     }
