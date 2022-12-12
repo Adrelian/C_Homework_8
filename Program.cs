@@ -263,72 +263,72 @@
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
-void RandomNumber(int row, int col, int dep)
-{
-    // Создание массива рандомных чисел (возможно повторение)
-    int[,,] array = new int [row, col, dep];
+// void RandomNumber(int row, int col, int dep)
+// {
+//     // Создание массива рандомных чисел (возможно повторение)
+//     int[,,] array = new int [row, col, dep];
 
-    // проверочный массив в одну строку, сюда складываем все значения основного массива
-    int[] resultArray = new int[row*col*dep];
+//     // проверочный массив в одну строку, сюда складываем все значения основного массива
+//     int[] resultArray = new int[row*col*dep];
 
-    // счётчик для проверки
-    int index = 0;
+//     // счётчик для проверки
+//     int index = 0;
 
-    // создание рандомных значений
-    for (int i = 0; i < row; i++) // по оси Х
-    {
-        for(int j = 0; j < col; j++) // по оси Y
-        {
-            for(int k = 0; k < dep; k++) // по оси Z
-            {
-                // создаём рандомное число
-                array[i,j,k] = new Random().Next(10,100);
+//     // создание рандомных значений
+//     for (int i = 0; i < row; i++) // по оси Х
+//     {
+//         for(int j = 0; j < col; j++) // по оси Y
+//         {
+//             for(int k = 0; k < dep; k++) // по оси Z
+//             {
+//                 // создаём рандомное число
+//                 array[i,j,k] = new Random().Next(10,100);
 
-                // перебираем готовые числа в проверочном массива для поиска повторов значений
-                for (int resultIndex = 0; resultIndex < row*col*dep;)
-                {
-                    // для одинаковых значений ищем новое значение
-                    if (resultArray[resultIndex] == array[i,j,k])
-                    {
-                        // новое рандомное число
-                       array[i,j,k] = new Random().Next(10,100);
-                       // обнуляем для проверки однострочного массива по новой
-                       resultIndex = 0;
-                    }
-                    else resultIndex++;
-                }
-                // записываем число из главного массива в проверочный-однострочный
-                resultArray[index] = array[i,j,k];
-                index++;
-            }
-        }
-    }
+//                 // перебираем готовые числа в проверочном массива для поиска повторов значений
+//                 for (int resultIndex = 0; resultIndex < row*col*dep;)
+//                 {
+//                     // для одинаковых значений ищем новое значение
+//                     if (resultArray[resultIndex] == array[i,j,k])
+//                     {
+//                         // новое рандомное число
+//                        array[i,j,k] = new Random().Next(10,100);
+//                        // обнуляем для проверки однострочного массива по новой
+//                        resultIndex = 0;
+//                     }
+//                     else resultIndex++;
+//                 }
+//                 // записываем число из главного массива в проверочный-однострочный
+//                 resultArray[index] = array[i,j,k];
+//                 index++;
+//             }
+//         }
+//     }
 
-    // Отображение массива
-    for (int i = 0; i < row; i++) // по оси Х
-    {
-        for(int j = 0; j < col; j++) // по оси Y
-        {
-            Console.Write("|");
-            for(int k = 0; k < dep; k++) // по оси Z
-            {
-                Console.Write($"{array[i, j, k],1}({i},{j},{k})|");
-            }
-            Console.WriteLine();            
-        }
-    }
-}
+//     // Отображение массива
+//     for (int i = 0; i < row; i++) // по оси Х
+//     {
+//         for(int j = 0; j < col; j++) // по оси Y
+//         {
+//             Console.Write("|");
+//             for(int k = 0; k < dep; k++) // по оси Z
+//             {
+//                 Console.Write($"{array[i, j, k],1}({i},{j},{k})|");
+//             }
+//             Console.WriteLine();            
+//         }
+//     }
+// }
 
 
-// Пользовательский ввод трёхмерного массива
-Console.WriteLine("Введите кол-во элементов по оси Х");
-int x = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите кол-во элементов по оси Y");
-int y = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите кол-во элементов по оси Z");
-int z = Convert.ToInt32(Console.ReadLine());
+// // Пользовательский ввод трёхмерного массива
+// Console.WriteLine("Введите кол-во элементов по оси Х");
+// int x = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Введите кол-во элементов по оси Y");
+// int y = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Введите кол-во элементов по оси Z");
+// int z = Convert.ToInt32(Console.ReadLine());
 
-RandomNumber(x, y, z);
+// RandomNumber(x, y, z);
 
 
 // Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
@@ -338,22 +338,80 @@ RandomNumber(x, y, z);
 // 11 16 15 06
 // 10 09 08 07
 
-void spiralArray (int row, int col, int dep)
+int [,] spiralArray (int n)
 {
-    // Создание массива рандомных чисел 
-    int[,,] array = new int [row, col, dep];
+    // начало массива
+    int i = 0;
+    int j = 0;
+    int[,] array = new int[4,4];
+    array[i,j] = n;
 
-    // перебор массива для выборки
-    for (int i = 0; i < row; i++) // по оси Х
+    while(j+1 < 4)
     {
-        for(int j = 0; j < col; j++) // по оси Y
-        {
-            for(int k = 0; k < dep; k++) // по оси Z
-            {
-                array[i,j,k] = new Random().Next(10,100);
-            }
-        }
+        j++;
+        n++;
+        array[i,j] = n;
     }
-    
 
+    while(i+1 < 4)
+    {
+            i++;
+            n++;
+            array[i,j] = n;
+    }
+
+    while(j-1 >= 0)
+    {
+            j--;
+            n++;
+            array[i,j] = n;
+    }
+
+    while(array[i-1,j] == 0)
+    {
+            i--;
+            n++;
+            array[i,j] = n;
+    }
+
+      while(array[i,j+1] == 0)
+    {
+            j++;
+            n++;
+            array[i,j] = n;
+    }
+
+
+      while(array[i+1,j] == 0)
+    {
+            i++;
+            n++;
+            array[i,j] = n;
+    }
+
+
+    j--;
+    n++;
+    array[i,j] = n; 
+    return array; 
 }
+
+
+void ShowArray(int[,]array)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            if (array[i,j] < 10) Console.Write("0" + array[i,j] + " ");
+            else Console.Write(array[i,j] + " ");
+        }
+        Console.WriteLine();
+    } 
+}
+
+Console.WriteLine("Первое число массива ");
+int a = Convert.ToInt32(Console.ReadLine());
+
+
+ShowArray(spiralArray(a));
