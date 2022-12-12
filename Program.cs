@@ -263,39 +263,43 @@
 // 27(0,0,1) 90(0,1,1)
 // 26(1,0,1) 55(1,1,1)
 
-void UniqueNumber(int row, int col, int dep)
+void RandomNumber(int row, int col, int dep)
 {
-    // инициализация массива
+    // Создание массива рандомных чисел (возможно повторение)
     int[,,] array = new int [row, col, dep];
 
-    // перебор массива для выборки
+    // проверочный массив в одну строку, сюда складываем все значения основного массива
+    int[] resultArray = new int[row*col*dep];
+
+    // счётчик для проверки
+    int index = 0;
+
+    // создание рандомных значений
     for (int i = 0; i < row; i++) // по оси Х
     {
         for(int j = 0; j < col; j++) // по оси Y
         {
             for(int k = 0; k < dep; k++) // по оси Z
             {
-                // пока "уникальность" равно false ищем новое случайное число
-                bool isUnique = false;
-                while(isUnique == false)
+                // создаём рандомное число
+                array[i,j,k] = new Random().Next(10,100);
+
+                // перебираем готовые числа в проверочном массива для поиска повторов значений
+                for (int resultIndex = 0; resultIndex < row*col*dep;)
                 {
-                    array[i, j ,k] = new Random().Next(10,21);
-                    isUnique = true;
-                    for (int x = 0; x < i; x++) // по оси Х
+                    // для одинаковых значений ищем новое значение
+                    if (resultArray[resultIndex] == array[i,j,k])
                     {
-                        for(int y = 0; y < j; y++) // по оси Y
-                        {
-                            for(int z = 0; z < k; z++) // по оси Z
-                            {
-                                if (array[i, j, k] == array[x, y, z])
-                                {
-                                    isUnique = false;
-                                    break;
-                                }
-                            }
-                        }
+                        // новое рандомное число
+                       array[i,j,k] = new Random().Next(10,100);
+                       // обнуляем для проверки однострочного массива по новой
+                       resultIndex = 0;
                     }
-                } 
+                    else resultIndex++;
+                }
+                // записываем число из главного массива в проверочный-однострочный
+                resultArray[index] = array[i,j,k];
+                index++;
             }
         }
     }
@@ -324,34 +328,8 @@ int y = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Введите кол-во элементов по оси Z");
 int z = Convert.ToInt32(Console.ReadLine());
 
-UniqueNumber(x, y, z);
+RandomNumber(x, y, z);
 
-
-// static int[] CreateRandomArray(int minValue, int length)
-// {
-//     int[] array = new int[length];
-//     for (int i = 0; i < length; i++)
-//     {
-//         bool isUnique = false;
-//         while (isUnique == false)
-//         {
-//             array[i] = new Random().Next(minValue, minValue + length);
-//             isUnique = true;
-//             for (int j = 0; j < i; j++)
-//             {
-//                 if (array[i] == array[j])
-//                 {
-//                     isUnique = false;
-//                     break;
-//                 }
-//             }
-//         } 
-//         Console.Write(array[i] + " ");
-//     }
-//     return array;
-// }
-
-// int [] arr = CreateRandomArray(1, 10);
 
 // Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
 // Например, на выходе получается вот такой массив:
@@ -360,3 +338,22 @@ UniqueNumber(x, y, z);
 // 11 16 15 06
 // 10 09 08 07
 
+void spiralArray (int row, int col, int dep)
+{
+    // Создание массива рандомных чисел 
+    int[,,] array = new int [row, col, dep];
+
+    // перебор массива для выборки
+    for (int i = 0; i < row; i++) // по оси Х
+    {
+        for(int j = 0; j < col; j++) // по оси Y
+        {
+            for(int k = 0; k < dep; k++) // по оси Z
+            {
+                array[i,j,k] = new Random().Next(10,100);
+            }
+        }
+    }
+    
+
+}
