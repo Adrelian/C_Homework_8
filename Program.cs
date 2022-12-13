@@ -338,65 +338,58 @@
 // 11 16 15 06
 // 10 09 08 07
 
-int [,] spiralArray (int n)
+int [,] spiralArray (int number)
 {
     // начало массива
     int i = 0;
     int j = 0;
     int[,] array = new int[4,4];
-    array[i,j] = n;
+    array[i,j] = number;
 
     // строка 1 запись слево направо i=0 j=0
     while(j+1 < 4)
     {
-        j++;
-        n++;
-        array[i,j] = n;
+        j++; number++; // по строке и увеличиваем числа
+        array[i,j] = number;
     }
     // стобец 4 запись сверху вниз i=0 j=4
     while(i+1 < 4)
     {
-        i++;
-        n++;
-        array[i,j] = n;
+        i++; number++; // по столбцу и увеличиваем числа
+        array[i,j] = number;
     }
     // строка 4 запись справо налевао i=4; j=4
     while(j-1 >= 0)
     {
-        j--;
-        n++;
-        array[i,j] = n;
+        j--; number++; // по строке назад и увеличиваем числа
+        array[i,j] = number;
     }
     // стоблец 1 запись снизу вверх i=4 j=0
     while(array[i-1,j] == 0)
     {
-        i--;
-        n++;
-        array[i,j] = n;
+        i--; number++; // по столбцу и увеличиваем числа
+        array[i,j] = number;
     }
     // строка 2 запись слева направо i=1 j=0
     while(array[i,j+1] == 0)
     {
-        j++;
-        n++;
-        array[i,j] = n;
+        j++; number++; // по строке и увеличиваем числа
+        array[i,j] = number;
     }
     // строка 3 запись справо налеова i=2 j=2
     while(array[i+1,j] == 0)
     {
-        i++;
-        n++;
-        array[i,j] = n;
+        i++; number++; // по столбцу и увеличиваем числа
+        array[i,j] = number;
     }
-
-
+    // последнее число в центре
     j--;
-    n++;
-    array[i,j] = n; 
+    number++;
+    array[i,j] = number; 
     return array; 
 }
 
-
+// отобразить получившийся массив
 void ShowArray(int[,]array)
 {
     for (int i = 0; i < 4; i++)
@@ -410,7 +403,7 @@ void ShowArray(int[,]array)
     } 
 }
 
-Console.WriteLine("Первое число массива ");
+Console.WriteLine("Стартуем с числа ");
 int a = Convert.ToInt32(Console.ReadLine());
 
 
