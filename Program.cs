@@ -404,7 +404,7 @@ void ShowArray(int[,]array)
 }
 
 Console.WriteLine("Стартуем с числа ");
-int a = Convert.ToInt32(Console.ReadLine());
+int number = Convert.ToInt32(Console.ReadLine());
 
 
-ShowArray(spiralArray(a));
+ShowArray(spiralArray(number));
